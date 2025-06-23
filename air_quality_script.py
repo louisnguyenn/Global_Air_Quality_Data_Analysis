@@ -1,31 +1,12 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 import seaborn as sns
-import plotly.express as px
 import sys
 
-def get_aqi_color(aqi_value):
-    if aqi_value <= 50:
-        return '#00E400'      # green
-
-    elif aqi_value <= 100:
-        return '#FFFF00'      # yellow
-
-    elif aqi_value <= 150:
-        return '#FF7E00'      # orange
-
-    elif aqi_value <= 200:
-        return '#FF0000'      # red
-
-    elif aqi_value <= 300:
-        return '#8F3F97'      # purple
-
-    else:
-        return '#7E0023'      # maroon
-
 def main():
-
+    
     # reading the dataset as a dataframe using pandas using try-except block
     try: 
         df = pd.read_csv("air_quality_preprocessed_dataset.csv", encoding="utf-8-sig")
@@ -33,19 +14,31 @@ def main():
     except IOError as err:
         print("Unable to open pre-processed file 'air_quality_preprocessed_dataset.csv' : {}".format(err), file=sys.stderr)
         sys.exit(1)
-
-    df['color'] = df['aqi'].apply(get_aqi_color)
     
-    # Create bar chart with custom colors
-    fig = px.bar(df, 
-                 x="city", 
-                 y="aqi", 
-                 title="Air Quality Metrics in Cities",
-                 color='color',
-                 color_discrete_map='identity')  # Use the actual color values
+    # create the matplotlib plot
+    plt.figure()
+    
+    bars = plt.bar(df['city'], df['aqi'],  
+                edgecolor='black', 
+                linewidth=0.8,
+                alpha=0.9)
 
-    # using plotly to create a bar graph
-    # fig = px.bar(df, x="city", y="aqi", title="Air Quality Metrics in Cities")
-    fig.show()
+    # customize the plot
+    plt.title("Air Quality Metrics in Cities", 
+              fontsize=20, 
+              fontweight='bold', 
+              pad=20)
+    plt.xlabel("City", fontsize=14, fontweight='bold')
+    plt.ylabel("Air Quality Index (AQI)", fontsize=14, fontweight='bold')
+    
+    # rotate city names for better readability
+    plt.xticks(rotation=45, ha='right', fontsize=10)
+    plt.yticks(fontsize=10)
+    
+    plt.grid(axis='y', alpha=0.3, linestyle='--')
+    
+    plt.tight_layout()
+    
+    plt.show()
 
 main()
