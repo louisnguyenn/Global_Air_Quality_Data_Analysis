@@ -29,6 +29,8 @@ def main():
     # creating a variable to write onto the output file
     dataset_writer = csv.writer(output_dataset)
 
+    dataset_writer.writerow(["city", "aqi"])
+
     print("Pre-processing dataset...")
     # pre process the required data from the csv
     for row in file_reader:

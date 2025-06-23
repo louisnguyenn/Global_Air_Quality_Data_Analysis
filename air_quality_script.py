@@ -16,7 +16,7 @@ def main():
         sys.exit(1)
 
     # using plotly to create a bar graph
-    plotly_fig = px.bar(df, x="city", y="aqi", title="Air Quality Metrics in Cities")
+    plotly_fig = px.bar(df, x="city", y="aqi" title="Air Quality Metrics in Cities")
     plotly_fig.show()
 
 main()
