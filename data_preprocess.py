@@ -3,7 +3,6 @@ import sys
 import csv
 
 def main():
-
     # open the dataset using try-except block
     try:
         input_dataset = open("air_quality_health_dataset.csv", "r", newline='', encoding="utf-8-sig")
