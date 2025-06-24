@@ -39,6 +39,19 @@ def main():
 
     # plt.show()
 
+    # box plot for jupyter notebook
+    # import pandas as pd
+    # import matplotlib.pyplot as plt
+
+    # df = pd.read_csv("air_quality_preprocessed_dataset.csv", encoding="utf-8-sig")
+
+    # # plotting boxplot with matplotlib
+    # df.boxplot('aqi')
+
+    # # print(df.columns.tolist())
+    # plt.show()
+
+    # bar graph
     plt.figure()
 
     city_avg = df.groupby('city')['aqi'].mean().sort_values(ascending=False)
