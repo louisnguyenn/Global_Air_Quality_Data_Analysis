@@ -13,7 +13,7 @@ def main():
 
     # open an output file to use for data analysis in write mode
     try:
-        output_dataset = open("air_quality_preprocessed_dataset.csv", "w", newline='', encoding="utf-8-sig")
+        output_dataset = open("delhi_air_quality_preprocessed_dataset.csv", "w", newline='', encoding="utf-8-sig")
 
     except IOError as err:
         print("Unable to open output file 'air_quality_preprocessed_dataset.csv' : {}".format(err), file=sys.stderr)
@@ -37,9 +37,10 @@ def main():
         aqi = row[2]
 
         # filtering the dataset with the requried cities
-        if city == "Delhi" or city == "Beijing" or city == "Mexico City" or city == "Los Angeles" or city == "London" or city == "Tokyo" or city == "Cairo" or city == "São Paulo":
+        # if city == "Delhi" or city == "Beijing" or city == "Mexico City" or city == "Los Angeles" or city == "London" or city == "Tokyo" or city == "Cairo" or city == "São Paulo":
+        if city == "Delhi":
             dataset_writer.writerow([city, aqi])
 
     print("Pre-processing finished.")
-    
+
 main()
