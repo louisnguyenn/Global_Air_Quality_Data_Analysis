@@ -29,6 +29,10 @@ def main():
         
     # plt.show()
 
+    # histogram plot
+    # df.plot.hist()
+    # plt.show()
+
     plt.figure()
 
     city_avg = df.groupby('city')['aqi'].mean().sort_values(ascending=False)
