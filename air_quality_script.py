@@ -29,8 +29,14 @@ def main():
         
     # plt.show()
 
-    # histogram plot
+    # # histogram plot
     # df.plot.hist()
+    # plt.show()
+
+    # # plotting histogram with matplotlib
+    # df.plot.scatter('city', 'aqi')
+    # plt.xticks(rotation=45, ha='right')
+
     # plt.show()
 
     plt.figure()
