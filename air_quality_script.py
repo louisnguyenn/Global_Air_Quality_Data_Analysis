@@ -14,42 +14,42 @@ def main():
         sys.exit(1)
     
     # create the matplotlib plot (bar graph)
-    # plt.figure()
+    plt.figure()
     
-    # bars = plt.bar(df['city'], df['aqi'])
+    bars = plt.bar(df['city'], df['aqi'])
 
-    # # customize the plot
-    # plt.title("Air Quality Metrics in Cities")
-    # plt.xlabel("City")
-    # plt.ylabel("Air Quality Index (AQI)")
+    # customize the plot
+    plt.title("Air Quality Metrics in Cities")
+    plt.xlabel("City")
+    plt.ylabel("Air Quality Index (AQI)")
     
-    # # rotate city names for better readability
-    # plt.xticks(rotation=45, ha='right', fontsize=10)
-    # plt.yticks(fontsize=10)
+    # rotate city names for better readability
+    plt.xticks(rotation=45, ha='right', fontsize=10)
+    plt.yticks(fontsize=10)
         
-    # plt.show()
+    plt.show()
 
-    # # histogram plot
-    # df.plot.hist()
-    # plt.show()
+    # histogram plot
+    df.plot.hist()
+    plt.show()
 
-    # # plotting histogram with matplotlib
-    # df.plot.scatter('city', 'aqi')
-    # plt.xticks(rotation=45, ha='right')
+    # plotting histogram with matplotlib
+    df.plot.scatter('city', 'aqi')
+    plt.xticks(rotation=45, ha='right')
 
-    # plt.show()
+    plt.show()
 
-    # box plot for jupyter notebook
-    # import pandas as pd
-    # import matplotlib.pyplot as plt
+    # plotting boxplot with matplotlib
+    df.boxplot('aqi')
 
-    # df = pd.read_csv("air_quality_preprocessed_dataset.csv", encoding="utf-8-sig")
+    # print(df.columns.tolist())
+    plt.show()
 
-    # # plotting boxplot with matplotlib
-    # df.boxplot('aqi')
-
-    # # print(df.columns.tolist())
-    # plt.show()
+    # heatmap
+    numeric_cols = df.select_dtypes(include=['number'])
+    sns.heatmap(numeric_cols.corr(), annot=True, cmap='RdYlBu')
+    plt.title('Air Quality Correlations')
+    plt.show()
 
     # bar graph
     plt.figure()
